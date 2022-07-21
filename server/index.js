@@ -1,10 +1,27 @@
+const models = require('./models/models')
+
 require('dotenv').config()
-const express = require('express');
+const express = require('express')
+const sequelize = require('./db')
+const cors = require('cors')
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000
 
-const app = express();
+const app = express()
+app.use(cors())
+app.use(express.json())
 
-app.listen(PORT, () => {
-    console.log(`Listening on: ${PORT}`);
-})
+const start = async () => {
+    try{
+        await sequelize.authenticate()
+        await sequelize.sync()
+        app.listen(PORT, () => {
+            console.log(`Listening on: ${PORT}`)
+        })
+    } 
+    catch (e){
+        console.log(e)
+    }
+}
+
+start()
