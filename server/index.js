@@ -5,6 +5,7 @@ const models = require('./models/models')
 const express = require('express')
 const sequelize = require('./db')
 const cors = require('cors')
+const fileUpload = require('express-fileupload')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 
 const PORT = process.env.PORT || 3000
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3000
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use(fileUpload({}))
 app.use('/api', router)
 
 app.use(errorHandler)

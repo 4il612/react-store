@@ -56,7 +56,7 @@ const Device = sequelize.define('device', {
     },
     rating  :{
         type: DataTypes.INTEGER,
-        defaulValue: 0
+        defaultValue: 0
     },
     img:{
         type: DataTypes.STRING,
@@ -101,7 +101,7 @@ const Rating = sequelize.define('rating', {
     },
     rate: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
     }
 })
 
