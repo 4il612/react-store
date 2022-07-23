@@ -14,3 +14,6 @@
     DB_HOST=
     DB_PORT=
 ```
+
+### DB diagram
+![db-dgram](https://i.ibb.co/0C765Dc/drawio.png "BD-dgram")
