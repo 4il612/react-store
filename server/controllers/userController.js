@@ -41,9 +41,22 @@ class UserController {
     }
 
 
-    async login(req, resp){
-        
+    async login(req, resp, next){
+        const {email, password} = req.body
+        const user = await User.findOne({where: {email}})
+        if (!user){
+            return next(ApiError.badRequest("This user doesn't exist"))
+        }
+
+        if (!bcrypt.compareSync(password, user.password)){
+            return next(ApiError.internal("Wrong password!!!"))
+        }
+
+        const token = generateJWT(user.id, user.email, user.role)
+
+        return resp.json({token})
     }
+
     async check(req, resp, next){
         const {id} = req.query
         if (!id){
