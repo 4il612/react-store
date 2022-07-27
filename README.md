@@ -2,7 +2,8 @@
 
 :yum: I like React 
 
-## Thank you, [UlbiTV](https://www.youtube.com/c/UlbiTV)
+## This is a server-app with PostgreSQL logic for client-app
+### Thank you, [UlbiTV](https://www.youtube.com/c/UlbiTV)
 
 ~~.env~~
 
