@@ -1,4 +1,4 @@
-# react-store
+# react-store-server
 
 :yum: I like React 
 
