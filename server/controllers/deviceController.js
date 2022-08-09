@@ -11,9 +11,13 @@ class DeviceController {
             let fileName = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
+            const device = await Device.create({name, price, brandId, typeId, img: fileName})
+
             if (info){
-                info = JSON.parse(info)
-                info.forEach((i) => {
+                console.log(info)
+                let res = JSON.parse(info)
+                console.log(res)
+                res.forEach((i) => {
                     DeviceInfo.create({
                         title: i.title,
                         description: i.description,
@@ -22,10 +26,9 @@ class DeviceController {
                 })
             }
 
-            const device = await Device.create({name, price, brandId, typeId, img: fileName})
-
             return resp.json(device)
         } catch (e){
+            console.log(e.message)
             next(ApiError.badRequest(e.message))
         } 
     }
